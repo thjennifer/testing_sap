@@ -3,6 +3,7 @@ connection: "@{CONNECTION_NAME}"
 
 # include all the views
 include: "/views/**/*.view"
+include: "/refinements.lkml"
 
 # Datagroups define a caching policy for an Explore. To learn more,
 # use the Quick Help panel on the right to see documentation.
@@ -69,7 +70,7 @@ explore: sales_orders {
           and ${sales_orders.currency_waerk}=${currency_conversion_new.fcurr}
           and ${sales_orders.creation_date_erdat_date} = ${currency_conversion_new.conv_date}
           and ${currency_conversion_new.kurst} = "M"
-          and ${currency_conversion_new.tcurr} = {% parameter sales_orders.Currency_Required %};;
+          ;;
   }
 
   join: billing {
